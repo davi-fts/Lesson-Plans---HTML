@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Work clothes and farm things · A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sans:"Inter","Segoe UI",Arial,sans-serif; --serif:"Source Serif 4",Georgia,serif;
+  --bg:#F5F4EF; --surface:#FFFFFF; --ink:#1D2A24; --muted:#5E6B64; --line:#E2E0D8; --soft:#EFEEE7;
+  --green:#1F4D3A; --green2:#2F6B52; --amber:#B7832A; --amberbg:#FBF3E2; --slate:#33424D;
+  --ok:#1E7F55; --okbg:#E3F2EA; --warn:#C98A00; --bad:#C23B32; --badbg:#F8E4E2;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121815; --surface:#1A221E; --ink:#E8EEEA; --muted:#A3B1A9; --line:#2C3833; --soft:#222C27;
+  --green:#7FC4A3; --green2:#5FAE8A; --amber:#E0B35C; --amberbg:#2E2717; --slate:#B8C6D0; --ok:#5CC894; --okbg:#173326; --bad:#E7766D; --badbg:#3A1F1C; } }
+:root[data-theme="dark"]{ --bg:#121815; --surface:#1A221E; --ink:#E8EEEA; --muted:#A3B1A9; --line:#2C3833; --soft:#222C27;
+  --green:#7FC4A3; --green2:#5FAE8A; --amber:#E0B35C; --amberbg:#2E2717; --slate:#B8C6D0; --ok:#5CC894; --okbg:#173326; --bad:#E7766D; --badbg:#3A1F1C; }
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:10px 22px;flex-wrap:wrap}
+.logo{width:36px;height:36px;border-radius:9px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .logo{color:#10201A} }
+.titles{flex:1 1 280px;min-width:0}
+.titles h1{margin:0;font-size:15px;font-weight:700;letter-spacing:.01em}
+.crumbs{font-size:13px;color:var(--muted)} .crumbs b{color:var(--ink);font-weight:600}
+.crumbs span+span::before{content:"›";margin:0 7px;color:var(--line)}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tb{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 12px;font-size:14px;font-weight:600}
+.tb:hover{border-color:var(--muted)} .tb svg{width:16px;height:16px}
+.tb[aria-pressed="true"]{background:var(--amberbg);border-color:var(--amber)}
+.tb.nav{background:var(--green);border-color:var(--green);color:#fff} .tb.nav:disabled{opacity:.35;cursor:default}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tb.nav{color:#10201A} }
+.count{font-size:13px;color:var(--muted);padding:0 6px;white-space:nowrap}
+.prog{height:3px;background:var(--line)} .prog span{display:block;height:100%;background:var(--amber);transition:width .3s}
+@media (max-width:820px){.tb .lbl{display:none}.tb{padding:8px}.titles{flex-basis:100%}}
+
+/* slide */
+main{max-width:1240px;margin:0 auto;padding:28px 22px 120px}
+.slide{animation:in .25s ease-out} @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.eyebrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.eyebrow .sec{color:var(--green)}
+.eyebrow .meth{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink);letter-spacing:.03em}
+.eyebrow .opt{background:var(--amberbg);border:1px solid var(--amber);border-radius:999px;padding:3px 10px;color:var(--ink)}
+.stitle{font-family:var(--serif);font-weight:700;font-size:clamp(28px,3.6vw,44px);line-height:1.12;margin:10px 0 6px;letter-spacing:-.01em}
+.sinstr{margin:0 0 22px;font-size:18px;color:var(--muted)}
+.tstrip{background:var(--amberbg);border:1px solid var(--amber);border-radius:10px;padding:10px 14px;margin:0 0 22px;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.tstrip b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:3px;color:var(--ink)}
+.tstrip ol{margin:0;padding-left:20px;flex:1 1 420px;font-size:15px}
+.tstrip button{border:0;background:none;font-weight:600;font-size:13px;text-decoration:underline;color:var(--ink)}
+body.noguide .tstrip{display:none}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch} @media (max-width:900px){.two{grid-template-columns:1fr}}
+.two.l{grid-template-columns:1.35fr 1fr} .two.r{grid-template-columns:1fr 1.35fr} @media (max-width:900px){.two.l,.two.r{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.card h3{margin:0 0 10px;font-size:15px;font-weight:700;letter-spacing:.02em}
+.stage{background:var(--soft);border-radius:10px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;gap:14px}
+.q{font-family:var(--serif);font-weight:600;font-size:clamp(22px,2.6vw,32px);line-height:1.25}
+.ans{font-weight:600;font-size:20px;color:var(--ok);min-height:30px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.center{justify-content:center}
+.btn{display:inline-flex;gap:8px;align-items:center;border:1px solid transparent;border-radius:8px;padding:9px 15px;font-weight:600;font-size:15px}
+.btn svg{width:17px;height:17px}
+.btn.pri{background:var(--green);color:#fff} .btn.sec{background:var(--surface);border-color:var(--line)} .btn.sec:hover{border-color:var(--muted)} .btn.ok{background:var(--ok);color:#fff}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .btn.pri,:root:not([data-theme="light"]) .btn.ok{color:#10201A} }
+.icon{width:46px;height:46px;border-radius:50%;background:var(--green);color:#fff;border:0;display:grid;place-items:center}
+.icon svg{width:20px;height:20px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .icon{color:#10201A} }
+.muted{color:var(--muted)} .small{font-size:14px}
+.pill{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-weight:600;font-size:14px}
+.list{display:grid;gap:10px}
+
+/* pictures */
+.pic{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);min-height:320px;background:#F1E6CC}
+.pic svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pic.hs{min-height:400px}
+.spot{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;border:3px solid #fff;background:var(--amber);color:#fff;font-weight:700;z-index:2;box-shadow:0 3px 10px rgba(0,0,0,.25);animation:pulse 1.8s infinite}
+.spot.seen{background:#7C877F;animation:none} .spot.on{background:var(--green);animation:none;transform:translate(-50%,-50%) scale(1.12)}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(183,131,42,.25)}}
+.note{position:absolute;background:#fff;color:#222;padding:12px 14px 10px 24px;font-size:14px;line-height:1.5;box-shadow:0 6px 16px rgba(0,0,0,.18);width:200px;border-radius:3px;z-index:3}
+.note::before{content:"";position:absolute;top:-8px;left:22px;width:54px;height:14px;border-radius:2px}
+.note.n1{top:22px;left:18px;transform:rotate(-3deg)} .note.n1::before{background:#6FA89A}
+.note.n2{top:30px;right:18px;transform:rotate(3deg)} .note.n2::before{background:#C9A15A}
+.note b{display:block;margin-bottom:2px} .note ul{margin:0;padding-left:16px}
+
+/* sentence practice */
+.tabs{display:flex;gap:18px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.tabs button{border:0;background:none;padding:8px 2px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent}
+.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--green)}
+.meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+.sent{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;padding:24px 8px;font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600}
+.sent button{border:0;background:none;padding:2px 4px;border-radius:6px;font-weight:600} .sent button:hover{background:var(--soft)}
+.w-ok{color:var(--ok)} .w-warn{color:var(--warn)} .w-bad{color:var(--bad)}
+.legend{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted)} .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.dots{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.dots button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:12px;font-weight:600;padding:0}
+.dots button.cur{border-color:var(--green);border-width:2px} .dots button.done{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.tablewrap{overflow-x:auto} table.rep{width:100%;border-collapse:collapse;font-size:14px;min-width:760px}
+.rep th{font-weight:500;color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)} .rep td{padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.status{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;background:var(--soft);color:var(--muted)} .status.c{background:var(--okbg);color:var(--ok)}
+
+/* sort / match / chips */
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 13px;font-weight:600}
+.chip.sel{border-color:var(--amber);background:var(--amberbg);box-shadow:0 0 0 3px rgba(183,131,42,.2)}
+.chip.good{background:var(--okbg);border-color:var(--ok)} .chip.bad{background:var(--badbg);border-color:var(--bad)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:44px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.col{border:2px dashed var(--line);border-radius:12px;padding:14px;min-height:180px;background:var(--surface)}
+.col.ready{border-color:var(--amber)}
+.col h4{margin:0 0 4px;font-family:var(--serif);font-size:24px} .col p{margin:0 0 10px;font-size:14px;color:var(--muted)}
+.col .items{display:flex;flex-wrap:wrap;gap:8px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px}
+.match .side{display:grid;gap:10px}
+.match .chip{text-align:left;font-size:17px;padding:11px 14px}
+.match .chip.done{background:var(--okbg);border-color:var(--ok);cursor:default}
+.shake{animation:shake .35s} @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.pairs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+
+/* unscramble */
+.ugrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 22px} @media (max-width:1000px){.ugrid{grid-template-columns:1fr 1fr}} @media (max-width:640px){.ugrid{grid-template-columns:1fr}}
+.uitem{display:grid;grid-template-columns:auto 1fr;gap:10px} .unum{font-weight:600;padding-top:10px;color:var(--muted)}
+.uline{min-height:46px;background:var(--soft);border-radius:6px 6px 0 0;border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:5px;padding:7px}
+.uline.ok{background:var(--okbg);border-color:var(--ok)} .uline.no{animation:shake .35s;border-color:var(--bad)}
+.upool{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:10px}
+.wc{border:1px solid var(--green2);background:var(--surface);color:var(--ink);border-radius:6px;padding:4px 9px;font-weight:600;font-size:14px}
+
+.three{display:grid;grid-template-columns:1fr 1fr .9fr;gap:20px;align-items:stretch} @media (max-width:1000px){.three{grid-template-columns:1fr 1fr}.three>.card{grid-column:1/-1}} @media (max-width:640px){.three{grid-template-columns:1fr}}
+.three .pic{height:100%}
+/* role-play, text areas, message */
+.rcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;min-height:250px}
+.rcard.a{border-top:4px solid var(--green)} .rcard.b{border-top:4px solid var(--amber)}
+.rcard h3{margin:0 0 6px} .rcard ul{margin:8px 0 0;padding-left:20px;font-size:16px} .rcard li{margin-bottom:6px}
+.covered{display:grid;place-items:center;text-align:center;gap:10px;min-height:200px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+textarea,input[type=text]{font:inherit;font-size:16px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:100%;resize:vertical}
+.form{display:grid;gap:10px} .form label{display:grid;gap:4px;font-weight:600;font-size:14px}
+.blurred{filter:blur(7px);user-select:none;transition:filter .3s}
+.dtext{font-family:var(--serif);font-size:21px;line-height:1.7;margin:0}
+.chat{background:#E7DED3;border-radius:14px;padding:18px;min-height:340px;display:flex;flex-direction:column;gap:10px}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .chat{background:#1E2622} }
+.chat .who{font-size:13px;color:#4C5A53;font-weight:600;text-align:center}
+.bubble{align-self:flex-end;max-width:88%;background:#DDF6C9;color:#1B2A1F;border-radius:12px 12px 2px 12px;padding:10px 14px;white-space:pre-wrap;box-shadow:0 1px 1px rgba(0,0,0,.1);font-size:15px}
+.bubble.them{align-self:flex-start;background:#fff;border-radius:12px 12px 12px 2px}
+.bigtime{font-family:var(--serif);font-weight:700;font-size:clamp(72px,12vw,130px);line-height:1;text-align:center}
+.rounds{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.rounds span{border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-weight:600;font-size:14px}
+.rounds span.on{background:var(--green);border-color:var(--green);color:#fff} .rounds span.done{text-decoration:line-through;color:var(--muted)}
+.err{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)} @media (max-width:700px){.err{grid-template-columns:1fr}}
+.err .wrong{color:var(--bad);font-weight:600}
+.cd{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;font-weight:600}
+.cd .o{display:flex;gap:6px} .cd .o button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600}
+.cd .o button[aria-pressed="true"].y{background:var(--okbg);border-color:var(--ok)} .cd .o button[aria-pressed="true"].n{background:var(--amberbg);border-color:var(--amber)}
+
+/* cover */
+.cover{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center;min-height:62vh} @media (max-width:900px){.cover{grid-template-columns:1fr}}
+.cover h2{font-family:var(--serif);font-size:clamp(40px,6vw,72px);line-height:1.02;margin:10px 0 14px;letter-spacing:-.02em}
+.cover p{font-size:18px;color:var(--muted);margin:0 0 22px}
+.goals{display:grid;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.goals li{display:flex;gap:10px;align-items:flex-start} .goals li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber);margin-top:9px;flex:none}
+
+/* drawers */
+.drawer{position:fixed;top:0;bottom:0;width:min(440px,100%);background:var(--surface);z-index:40;transition:transform .25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.right{right:0;border-left:1px solid var(--line);transform:translateX(105%)} .drawer.left{left:0;border-right:1px solid var(--line);transform:translateX(-105%)}
+.drawer.open{transform:none;box-shadow:0 0 50px rgba(0,0,0,.18)}
+.dhead{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line)} .dhead h3{margin:0;font-size:16px}
+.dbody{padding:18px 20px;overflow:auto;font-size:15px}
+.dbody .pre{white-space:pre-line}
+.why{margin-top:14px;background:var(--soft);border-radius:10px;padding:12px}
+.x{border:0;background:var(--soft);border-radius:8px;width:34px;height:34px}
+.toc h4{margin:16px 0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+.toc button{display:grid;grid-template-columns:28px 1fr auto;gap:8px;width:100%;text-align:left;border:0;background:none;padding:8px 6px;border-radius:8px;align-items:center}
+.toc button:hover{background:var(--soft)} .toc button.cur{background:var(--amberbg)}
+.toc .n{color:var(--muted);font-size:13px} .toc .m{font-size:12px;color:var(--muted)} .toc .t{font-size:13px;color:var(--muted);white-space:nowrap}
+dialog{border:0;border-radius:14px;padding:0;width:min(820px,94vw);max-height:86vh;background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(15,25,20,.5)}
+.vt{width:100%;border-collapse:collapse} .vt td{padding:9px 6px;border-bottom:1px solid var(--line)} .vt td:last-child{color:var(--muted)}
+.gr h4{margin:18px 0 6px} .gr p{margin:4px 0} .ex{background:var(--soft);border-radius:8px;padding:8px 12px;margin:6px 0}
+.timer{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px 8px;display:flex;align-items:center;gap:6px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.timer .t{font-weight:700;font-size:19px;min-width:58px;text-align:center;font-variant-numeric:tabular-nums} .timer .t.done{color:var(--bad)}
+.timer button{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:3px 8px;font-weight:600;font-size:13px}
+@media (max-width:640px){.timer [data-min]{display:none}}
+.timeup{animation:blink .5s 6} @keyframes blink{50%{background:var(--bad);color:#fff}}
+.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:9px 16px;border-radius:10px;z-index:60;display:none}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.vcard{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 12px 14px;text-align:center;display:grid;gap:2px}
+.vn{position:absolute;top:10px;left:10px;width:26px;height:26px;border-radius:50%;background:var(--amber);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center}
+.ve{font-size:52px;line-height:1.2}.vw{font-size:19px}.vp{font-size:13px;color:var(--muted)}
+.vbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.vb{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:12px;padding:14px 16px}
+.vbh{display:flex;align-items:center;gap:8px;font-size:19px}.vbh .vn{position:static;flex:none}
+.arrow{color:var(--muted)}.past{color:var(--green)}.hidden-past{color:transparent;border-bottom:2px solid var(--muted);min-width:60px;display:inline-block}
+.vb .vp{margin:4px 0 6px}.vex{font-family:var(--serif);font-size:17px;font-style:italic}
+.gc{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 4px;border-bottom:1px solid var(--line)}
+.gs{font-size:19px;flex:1 1 300px}.blank{font-weight:700;letter-spacing:.04em}.blank.done{color:var(--ok)}
+.dl{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.dw{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;flex:none;background:var(--green)}
+.dl.b .dw{background:var(--amber)}
+.dt{flex:1;background:var(--soft);border-radius:999px;padding:11px 20px;font-size:20px}
+.gapw{display:inline-block;min-width:2.4em;border-bottom:2px solid var(--muted);color:transparent;user-select:none}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="logo" aria-hidden="true">A1</div>
+  <div class="titles"><h1>Work clothes and farm things</h1><div class="crumbs" id="crumbs"></div></div>
+  <div class="tools">
+    <button class="tb" id="bToc" title="Lesson plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span class="lbl">Lesson plan</span></button>
+    <button class="tb" id="bGuide" aria-pressed="true" title="Teacher's guide (T)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg><span class="lbl">Teacher's Guide</span></button>
+    <button class="tb" id="bVocab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h11a3 3 0 0 1 3 3v12H7a3 3 0 0 1-3-3z"/></svg><span class="lbl">Vocabulary</span></button>
+    <button class="tb" id="bGram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 9h8M8 13h5"/></svg><span class="lbl">Grammar</span></button>
+    <span class="count" id="count"></span>
+    <button class="tb nav" id="bBack" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="lbl">Back</span></button>
+    <button class="tb nav" id="bNext" aria-label="Next"><span class="lbl">Next</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </div>
+</header>
+<div class="prog"><span id="prog"></span></div>
+<main id="main"></main>
+
+<aside class="drawer left" id="toc" aria-label="Lesson plan"><div class="dhead"><h3>Lesson plan</h3><button class="x" data-close="toc" aria-label="Close">✕</button></div><div class="dbody toc" id="tocBody"></div></aside>
+<aside class="drawer right" id="guide" aria-label="Teacher's guide"><div class="dhead"><h3>Teacher's Guide</h3><button class="x" data-close="guide" aria-label="Close">✕</button></div><div class="dbody" id="guideBody"></div></aside>
+<dialog id="dVocab"><div class="dhead"><h3>Vocabulary</h3><button class="x" data-dlg="dVocab" aria-label="Close">✕</button></div><div class="dbody" id="vocabBody"></div></dialog>
+<dialog id="dGram"><div class="dhead"><h3>Grammar</h3><button class="x" data-dlg="dGram" aria-label="Close">✕</button></div><div class="dbody gr" id="gramBody"></div></dialog>
+<div class="timer" aria-label="Activity timer"><span class="t" id="tDisp">3:00</span><button data-min="1">1</button><button data-min="3">3</button><button data-min="5">5</button><button id="tGo">Start</button></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast._t);toast._t=setTimeout(()=>t.style.display='none',2400);}
+const IC={
+ ff:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6l8 6-8 6zM12 6l8 6-8 6z"/></svg>',
+ shuf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 4h4v4M4 20L20 4M20 16v4h-4M15 15l5 5M4 4l5 5"/></svg>',
+ check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12l5 5L20 7"/></svg>',
+ again:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v5h5"/></svg>',
+ eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+ play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>',
+ copy:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>'
+};
+
+/* ---------- illustrations ---------- */
+const cow=(x,y,s=1,w=1,ticks=0,flip=false)=>`<g transform="translate(${x} ${y}) scale(${(flip?-1:1)*s*w} ${s})"><text x="0" y="0" font-size="64" text-anchor="middle">🐄</text>${[...Array(ticks)].map((_,i)=>`<circle cx="${-14+i*9}" cy="${-30+(i%2)*9}" r="3.2" fill="#2B1B10"/>`).join('')}</g>`;
+const sky=(id,a,b)=>`<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="600" height="400" fill="url(#${id})"/>`;
+const fence=`<g stroke="#6B4E2E" stroke-width="5">${[30,120,210,300,390,480,570].map(x=>`<line x1="${x}" y1="300" x2="${x}" y2="345"/>`).join('')}<line x1="10" y1="312" x2="590" y2="312"/><line x1="10" y1="332" x2="590" y2="332"/></g>`;
+const tag=(t)=>`<rect x="18" y="18" rx="6" width="${t.length*12+24}" height="34" fill="#fff" opacity=".94"/><text x="30" y="41" font-size="18" font-weight="600" font-family="Inter,Arial" fill="#1D2A24">${t}</text>`;
+const SVG={
+ ranch:`<svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A cattle ranch with a sales rep and a rancher">${sky('gr','#F6E6C2','#EFD7A6')}<circle cx="490" cy="80" r="40" fill="#E9B04E" opacity=".9"/><path d="M0 240 Q150 200 300 235 T600 225 V400 H0Z" fill="#B7A263"/><path d="M0 290 Q200 255 380 290 T600 280 V400 H0Z" fill="#8FA356"/>${fence}<rect x="60" y="190" width="90" height="60" fill="#9C5B34"/><path d="M52 193 L105 155 L158 193Z" fill="#74391E"/>${cow(230,295,1,1)}${cow(330,282,.85,1,0,true)}${cow(420,300,.95,1)}<text x="150" y="398" font-size="84">🧑‍💼</text><text x="330" y="398" font-size="84">🤠</text></svg>`,
+ sick:`<svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Thin cattle with ticks, dry grass, an empty feeder and a worried rancher">${sky('gs','#F5D9A4','#EFC17F')}<circle cx="520" cy="70" r="44" fill="#E88F3A"/><path d="M0 230 Q200 200 600 225 V400 H0Z" fill="#C7A365"/><path d="M0 280 Q300 250 600 285 V400 H0Z" fill="#B08E52"/>${fence}${cow(150,285,1.05,.78,4)}${cow(275,270,.9,.78,5,true)}${cow(385,290,1.1,.78,3)}<rect x="440" y="300" width="110" height="34" rx="4" fill="#86673F"/><text x="495" y="323" font-size="15" text-anchor="middle" fill="#fff" font-family="Inter,Arial">empty</text><text x="520" y="285" font-size="70" text-anchor="middle">👨‍🌾</text><text x="560" y="215" font-size="36">😟</text>${tag('January')}</svg>`,
+ after:`<svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Healthy cattle, calves, green grass, a full feeder and a happy rancher">${sky('ga','#D3EAF3','#EDF6F8')}<circle cx="520" cy="70" r="38" fill="#F2C24E"/><path d="M0 230 Q200 200 600 225 V400 H0Z" fill="#8DBD68"/><path d="M0 280 Q300 250 600 285 V400 H0Z" fill="#72A74F"/>${fence}${cow(140,285,1.1,1.15)}${cow(270,272,.95,1.15,0,true)}${cow(385,292,1.12,1.15)}${cow(215,330,.55,1)}${cow(330,338,.5,1,0,true)}<rect x="440" y="300" width="110" height="34" rx="4" fill="#86673F"/><text x="470" y="326" font-size="24">🌾🌾🌾</text><text x="520" y="285" font-size="70" text-anchor="middle">👨‍🌾</text><text x="560" y="215" font-size="36">😀</text>${tag('April')}</svg>`
+};
+const pic=(id,cls='')=>`<div class="pic ${cls}">${SVG[id]}</div>`;
+
+/* near / far scene */
+SVG.nearfar=`<svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A farm. Near: a hat, boots and gloves on a bench. Far: a cow, a group of cows and a tractor.">${sky('gn','#D6ECF5','#F1F7F3')}
+ <path d="M0 200 Q200 170 600 195 V400 H0Z" fill="#9CC27A"/><path d="M0 250 Q300 225 600 255 V400 H0Z" fill="#86B163"/>
+ <g stroke="#8A6A43" stroke-width="3">${[20,90,160,230,300,370,440,510,580].map(x=>`<line x1="${x}" y1="215" x2="${x}" y2="240"/>`).join('')}<line x1="0" y1="222" x2="600" y2="222"/></g>
+ <text x="70" y="212" font-size="34">🐄</text><text x="250" y="205" font-size="28">🐄🐄🐄</text><text x="470" y="215" font-size="44">🚜</text>
+ <rect x="20" y="320" width="560" height="22" rx="4" fill="#8A6239"/><rect x="40" y="342" width="16" height="50" fill="#6E4C2A"/><rect x="544" y="342" width="16" height="50" fill="#6E4C2A"/>
+ <text x="70" y="318" font-size="88">🤠</text><text x="235" y="320" font-size="84">🥾🥾</text><text x="440" y="318" font-size="76">🧤🧤</text></svg>`;
+
+/* ======================= LESSON ======================= */
+const SECTIONS=['Warm Up','Language development','Closure'];
+const S=[
+{type:'cover',sec:-1,title:'Work clothes and farm things',method:'Overview',min:0,
+ sub:'Leysimar · Agropecuária 3i · Level A1',
+ goals:['Name work clothes and things on the farm','Use this, that, these and those','Make plurals: boots, boxes, calves, men','Ask to borrow things and ask about prices'],
+ more:`Aula adaptada do material "Vocabulary / Verbs / Demonstrative Pronouns + Noun Plurals" para a aluna Leysimar, nível A1.
+
+Contexto: ela trabalha na Agropecuária 3i, uma empresa com mais de 50 anos que une lavoura e pecuária de corte (recria, confinamento e agricultura), com operação em São Paulo e Goiás. Não sabemos a função exata dela: pergunte no aquecimento e use as respostas na aula.
+
+O que foi adaptado:
+• Vocabulário: roupas → roupas de trabalho na fazenda (boots, hat, gloves, vest...).
+• Verbos: os mesmos 8 do material (try, ask, lend, cost, guess, borrow, wear, buy), com exemplos do trabalho.
+• Gramática: this / that / these / those + plurais, com coisas da fazenda (cows, calves, boxes, men).
+
+Sequência: aquecimento → vocabulário → perceber (perto/longe na imagem) → entender a regra → praticar → usar → checar.
+Cerca de 65 minutos. Se precisar cortar, os slides marcados como "Optional" podem ficar para a próxima aula.`,
+ why:'O conteúdo do material original continua o mesmo, mas aplicado ao mundo da aluna. Isso dá sentido às palavras e aumenta a chance de ela usá-las de verdade.'},
+
+{type:'talk',sec:0,method:'Communicative warm-up',min:5,title:"Let's talk about your work",instr:'Answer the questions. Short answers are fine.',
+ qs:["What's your name?",'Where do you work?','What do you do at work?','What do you wear at work?','What animals are on the farm?'],
+ steps:['Mostre a pergunta. Aceite respostas curtas ("Boots!", "Cows!").','Use » para a próxima pergunta.','Descubra a função dela no trabalho e anote palavras que ela disser em português.'],
+ more:`Nível A1: frases curtas e muito modelo. Se ela travar, dê o começo da frase ("I work at...", "I wear...").`,
+ why:'Conversa sobre a vida real da aluna ativa o tema e mostra a você o que ela já sabe.'},
+
+{type:'vocab',sec:1,method:'Picture vocabulary',min:8,title:'Work clothes',instr:'Listen and repeat. Then say the words without help.',
+ items:[['🥾','boots','botas'],['🤠','hat','chapéu'],['🧢','cap','boné'],['🧤','gloves','luvas'],['👕','T-shirt','camiseta'],['👔','shirt','camisa'],['👖','jeans','calça jeans'],['🧥','jacket','jaqueta'],['🦺','vest','colete'],['🧦','socks','meias'],['☔','raincoat','capa de chuva'],['👚','uniform','uniforme']],
+ steps:['Diga cada palavra. A aluna repete.','Pergunte: "What do you wear at work?" Ela aponta e diz.','Clique em "Hide words". Aponte as imagens e ela diz sem ler.'],
+ more:`Atenção à pronúncia: gloves (o "o" soa como "â"), jacket (djé-ket), clothes (clouz).
+Pergunte se ela usa uniforme ou outras roupas no trabalho e acrescente a palavra.`,
+ why:'Palavras com imagem e depois sem a palavra escrita: da apresentação para a recuperação.'},
+
+{type:'verbs',sec:1,method:'Verbs in context',min:7,title:'Verbs',instr:'Read the verb and the example. Then cover the past form.',
+ items:[['try','tried','experimentar / tentar','I tried the new boots.'],['ask','asked','perguntar / pedir','She asked the manager.'],['lend','lent','emprestar (para alguém)','Can you lend me your gloves?'],['cost','cost','custar','These boots cost 200 reais.'],['guess','guessed','adivinhar','Guess how many cows we have!'],['borrow','borrowed','pegar emprestado','Can I borrow your hat?'],['wear','wore','vestir / usar (roupa)','We wear boots at work.'],['buy','bought','comprar','The farm bought a new tractor.']],
+ steps:['Leia o verbo e o exemplo. A aluna repete.','Explique LEND (eu empresto) × BORROW (eu pego emprestado) com um objeto real.','Clique em "Hide past forms". Diga o verbo e ela diz o passado.'],
+ more:`Os mesmos 8 verbos do material original, com exemplos do trabalho.
+Teste rápido de lend × borrow: segure uma caneta. "Can I borrow your pen?" / "I can lend you my pen."`,
+ why:'Verbos dentro de exemplos com sentido são mais fáceis de lembrar do que listas soltas.'},
+
+{type:'nearfar',sec:1,method:'Picture exploitation',min:6,title:'Near or far?',instr:'Click a number. Is it near or far? One or more?',
+ spots:[{x:13,y:72,c:'1 · near',a:'This is a hat.'},{x:46,y:72,c:'2+ · near',a:'These are boots.'},{x:83,y:72,c:'2+ · near',a:'These are gloves.'},{x:14,y:47,c:'1 · far',a:'That is a cow.'},{x:51,y:45,c:'2+ · far',a:'Those are cows.'},{x:82,y:47,c:'1 · far',a:'That is a tractor.'}],
+ steps:['Faça o número 1 como modelo, apontando: "This is a hat."','Ela clica nos outros e tenta a frase. "Show answer" confere.','Pergunte: "Why THIS and not THAT?" Deixe ela perceber: perto ou longe, um ou vários.'],
+ more:`Aqui ela só PERCEBE a diferença. A regra vem no próximo slide.
+Ideal: fazer também com objetos reais da sala (perto) e da janela (longe).`,
+ why:'A imagem mostra a ideia de perto/longe e um/vários antes da explicação, e a aluna descobre a regra a partir do que vê.'},
+
+{type:'sort',sec:1,method:'Guided discovery',min:5,title:'This, that, these or those?',instr:'Put each picture in the right group. What is the rule?',
+ cols:[{k:'this',h:'this',r:'1 thing · near'},{k:'that',h:'that',r:'1 thing · far'},{k:'these',h:'these',r:'2+ things · near'},{k:'those',h:'those',r:'2+ things · far'}],
+ items:[['🧢 near','this'],['🐄 far','that'],['🧤🧤 near','these'],['🐄🐄 far','those'],['🚜 far','that'],['🥾🥾 near','these'],['🌽 near','this'],['🐂🐂 far','those']],
+ steps:['Clique numa imagem e depois na coluna. Faça 2 com ela.','Ela faz o resto e clica em "Check".','Pergunte a regra. Só depois clique em "Show the rule".'],
+ more:`A regra é a mesma do material original: This = 1 coisa perto / That = 1 coisa longe / These = 2+ perto / Those = 2+ longe.
+Lembre: this/that + IS, these/those + ARE.`,
+ why:'Descobrir a regra a partir de exemplos (descoberta guiada) ajuda a entender e a lembrar.'},
+
+{type:'sort',sec:1,method:'Guided discovery',min:6,optional:true,title:'One cow, two cows',instr:'How do we make the plural? Put each word in a group.',
+ cols:[{k:'s',h:'+ s',r:'cow → cows'},{k:'es',h:'+ es',r:'box → boxes'},{k:'ies',h:'y → ies',r:'battery → batteries'},{k:'ves',h:'f → ves',r:'calf → calves'},{k:'irr',h:'irregular',r:'man → men'}],
+ items:[['boot','s','boots'],['cow','s','cows'],['box','es','boxes'],['watch','es','watches'],['battery','ies','batteries'],['calf','ves','calves'],['knife','ves','knives'],['sheep','irr','sheep'],['man','irr','men'],['woman','irr','women']],
+ steps:['Mostre os exemplos de cada coluna (cow → cows, box → boxes...).','Ela coloca cada palavra no grupo certo e clica em "Check". A palavra no plural aparece.','Ela diz frases: "Those are calves." "These are boxes."'],
+ more:`Palavras da fazenda: calf → calves (bezerros) e sheep → sheep (não muda) são ótimas para o contexto dela.
+Pronúncia: boxes e watches ganham uma sílaba a mais ("bóks-iz").`,
+ why:'Agrupar palavras pelo padrão facilita perceber a regra em vez de decorar uma por uma.'},
+
+{type:'gapchoice',sec:1,method:'Controlled practice',min:5,title:'Choose the right word',instr:'Choose. Then say the full sentence.',
+ items:[{s:'___ is my hat. (near)',o:['This','That','These','Those'],a:'This'},{s:'___ are my boots. (near)',o:['This','That','These','Those'],a:'These'},{s:'___ is a tractor. (far)',o:['This','That','These','Those'],a:'That'},{s:'___ are calves. (far)',o:['This','That','These','Those'],a:'Those'},{s:'These ___ are new.',o:['glove','gloves'],a:'gloves'},{s:'Those ___ are big.',o:['cows','cow'],a:'cows'},{s:'This ___ is from the farm.',o:['box','boxes'],a:'box'},{s:'There are ten ___ in the field.',o:['calfs','calves'],a:'calves'}],
+ steps:['Faça a primeira com ela.','Ela escolhe e diz a frase inteira em voz alta.','Se errar, pergunte: "Near or far? One or more?"'],
+ more:`Prática controlada: ela só escolhe entre opções, com correção na hora.`,
+ why:'Muita prática guiada com alta taxa de acerto antes de pedir que a aluna produza sozinha (Rosenshine).'},
+
+{type:'dialog',sec:1,method:'Disappearing dialogue',min:6,title:'At the farm warehouse',instr:'Read the dialogue. Then say it with fewer words.',
+ lines:[['A','Hi! Can I borrow these gloves?'],['B','Sure! I can lend you those. These are new.'],['A','Thanks! How much do new boots cost?'],['B','These boots cost 200 reais.'],['A','Can I try them on?'],['B','Of course!']],
+ steps:['Leia o diálogo com ela (você é B). Depois troquem.','Clique em "Hide words" 2 ou 3 vezes. Ela diz o diálogo com cada vez menos palavras.','Ela adapta: troca gloves e boots por outras coisas do trabalho.'],
+ more:`Usa os verbos da aula (borrow, lend, cost, try) e os demonstrativos.
+"Try them on" = experimentar (roupa).`,
+ why:'Frases prontas, que vão sumindo aos poucos, levam da leitura para a fala de memória.'},
+
+{type:'roleplay',sec:2,method:'Role-play',min:8,title:'Borrow or buy?',instr:'You need things for work. Your teacher works in the warehouse.',
+ a:{t:'Leysimar (you)',i:['You need gloves and a raincoat.','Ask to borrow the gloves.','Ask: "How much does this raincoat cost?"','Ask to try it on.','Buy it!']},
+ b:{t:'Warehouse (teacher)',i:['You have gloves to lend. Point: "These? Those?"','The raincoat costs 150 reais.','The boots cost 200 reais.','Say: "Sure!" / "Of course!" / "Here you are."']},
+ phrases:['Can I borrow...?','How much does this ... cost?','How much do these ... cost?','Can I try it on?','I want this / these, please.','Thank you!'],
+ steps:['Abra só o cartão dela. Você usa o cartão do almoxarifado.','Use objetos reais ou as imagens: aponte e use this/that/these/those.','Façam 2 vezes, depois troquem de papel.'],
+ more:`Se a função dela for outra (escritório, campo), adapte a situação: pedir material no escritório, pedir ferramentas no campo.`,
+ why:'Uma situação real do trabalho, com objetivo claro (conseguir o que precisa), faz a aluna usar a língua para se comunicar.'},
+
+{type:'talk',sec:2,method:'Personalised speaking',min:5,title:'Look around you',instr:'Show things near and far. Say what they are.',
+ qs:['What is this? (something near you)','What are these? (two things near you)','What is that? (something far)','What are those? (things far away)','What do you wear at work?'],
+ steps:['Ela mostra objetos reais perto e longe (na sala ou na câmera).','Ela diz: "This is my phone." "Those are chairs."','Corrija só no final.'],
+ more:`Funciona muito bem online: ela mostra objetos na câmera.`,
+ why:'Usar a gramática com objetos reais à volta dela fixa melhor do que exercícios no papel.'},
+
+{type:'feedback',sec:2,method:'Feedback and self-assessment',min:4,title:"Let's fix it",instr:'Correct the sentences. What can you do now?',
+ items:['I can name my work clothes.','I can use this, that, these and those.','I can make plurals.','I can ask to borrow something and ask the price.'],
+ steps:['Digite 2 ou 3 frases erradas que você anotou.','Pergunte "What\'s wrong?". Ela corrige antes de você digitar a correção.','Leia os "I can...". Ela responde "Yes, I can" ou "Not yet".'],
+ more:`Erros comuns em A1: "This are my boots" (these are) / "Those cow" (those cows) / "Can I lend your pen?" (borrow) / "calfs" (calves).`,
+ why:'Correção depois da atividade, levando a aluna a se corrigir, tem efeito maior e mais duradouro.'}
+];
+
+/* ======================= RENDERERS ======================= */
+const R={};
+const strip=s=>s.steps?`<div class="tstrip"><b>Teacher</b><ol>${s.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><button data-more>More</button></div>`:'';
+const header=s=>`<div class="eyebrow"><span class="sec">${SECTIONS[s.sec]}</span><span class="meth">${esc(s.method)}</span><span>${s.min} min</span>${s.optional?'<span class="opt">Optional</span>':''}</div><h2 class="stitle">${esc(s.title)}</h2><p class="sinstr">${esc(s.instr)}</p>`;
+const hideBtn=(lbl)=>`<button class="btn sec" data-hide>${IC.eye} <span>${lbl}</span></button>`;
+
+R.cover=s=>`<div class="cover"><div><div class="eyebrow"><span class="sec">${esc(s.sub)}</span></div><h2>${esc(s.title)}</h2><p>A lesson about your work at the farm: clothes, animals and things.</p>
+ <ul class="goals">${s.goals.map(g=>`<li>${esc(g)}</li>`).join('')}</ul><div class="row"><button class="btn pri" data-go="1">${IC.play} Start the lesson</button><button class="btn sec" data-open-toc>See the lesson plan</button></div></div>${pic('ranch')}</div>`;
+
+R.talk=s=>`<div class="two l"><div class="card"><div class="stage"><div class="q" id="q"></div><div class="row center"><button class="icon" data-act="next" aria-label="Next question">${IC.ff}</button><button class="icon" data-act="shuf" aria-label="Random question">${IC.shuf}</button></div><div class="small muted" id="pos"></div></div></div>${pic('ranch')}</div>`;
+R.talk.init=(el,s)=>{ let i=0; const d=()=>{ $('#q',el).textContent=s.qs[i]; $('#pos',el).textContent=`${i+1} / ${s.qs.length}`; }; d();
+ el.addEventListener('click',e=>{ const a=e.target.closest('[data-act]'); if(!a) return; if(a.dataset.act==='next') i=(i+1)%s.qs.length; else { let j; do{ j=Math.floor(Math.random()*s.qs.length);}while(j===i); i=j; } d(); }); };
+
+R.vocab=s=>`<div class="row" style="justify-content:flex-end;margin-bottom:12px">${hideBtn('Hide words')}</div><div class="vgrid">${s.items.map(([e,w,p],k)=>`<div class="vcard"><span class="vn">${k+1}</span><span class="ve" aria-hidden="true">${e}</span><b class="vw">${esc(w)}</b><span class="vp">${esc(p)}</span></div>`).join('')}</div>`;
+R.vocab.init=el=>{ let h=false; el.addEventListener('click',e=>{ const b=e.target.closest('[data-hide]'); if(!b) return; h=!h; $('span',b).textContent=h?'Show words':'Hide words'; $$('.vw',el).forEach(x=>x.style.visibility=h?'hidden':'visible'); }); };
+
+R.verbs=s=>`<div class="row" style="justify-content:flex-end;margin-bottom:12px">${hideBtn('Hide past forms')}</div><div class="vbgrid">${s.items.map(([v,p,pt,ex],k)=>`<div class="vb"><div class="vbh"><span class="vn">${k+1}</span><b>to ${esc(v)}</b><span class="arrow">→</span><b class="past">${esc(p)}</b></div><div class="vp">${esc(pt)}</div><div class="vex">${esc(ex)}</div></div>`).join('')}</div>`;
+R.verbs.init=el=>{ let h=false; el.addEventListener('click',e=>{ const b=e.target.closest('[data-hide]'); if(!b) return; h=!h; $('span',b).textContent=h?'Show past forms':'Hide past forms'; $$('.past',el).forEach(x=>x.classList.toggle('hidden-past',h)); }); };
+
+R.nearfar=s=>`<div class="two l">${pic('nearfar','hs')}<div class="card"><div class="stage"><div class="small muted" id="num">Click a number on the picture.</div><div class="pill" id="cue" style="font-size:20px;padding:8px 18px;display:none"></div><div class="q" id="ex" style="color:var(--ok);min-height:1.3em"></div><button class="btn sec" data-act="ex" style="display:none">${IC.eye} Show answer</button></div></div></div>`;
+R.nearfar.init=(el,s)=>{ $('.pic',el).insertAdjacentHTML('beforeend',s.spots.map((p,k)=>`<button class="spot" style="left:${p.x}%;top:${p.y}%" data-spot="${k}" aria-label="Item ${k+1}">${k+1}</button>`).join('')); let cur=null;
+ el.addEventListener('click',e=>{ const b=e.target.closest('[data-spot]'), a=e.target.closest('[data-act="ex"]');
+  if(b){ cur=+b.dataset.spot; b.classList.add('seen'); $$('[data-spot]',el).forEach(x=>x.classList.toggle('on',x===b)); $('#num',el).textContent=`Item ${cur+1} of ${s.spots.length}`; const c=$('#cue',el); c.textContent=s.spots[cur].c; c.style.display='inline-block'; $('#ex',el).textContent=''; $('[data-act="ex"]',el).style.display='inline-flex'; }
+  if(a&&cur!=null) $('#ex',el).textContent=s.spots[cur].a; }); };
+
+R.sort=s=>`<div class="card"><div class="pool" id="pool">${shuffle(s.items).map(([t,c,pl])=>`<button class="chip" data-c="${c}" data-t="${esc(t)}" ${pl?`data-pl="${esc(pl)}"`:''}>${esc(t)}</button>`).join('')}</div>
+ <div class="cols" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">${s.cols.map(c=>`<div class="col" data-col="${c.k}" role="button" tabindex="0" aria-label="Put here: ${esc(c.h)}"><h4>${esc(c.h)}</h4><p data-rule="${esc(c.r)}"></p><div class="items"></div></div>`).join('')}</div>
+ <div class="row center" style="margin-top:16px"><button class="btn pri" data-act="check">${IC.check} Check</button><button class="btn sec" data-act="rule">${IC.eye} Show the rule</button><button class="btn sec" data-act="reset">${IC.again} Start again</button></div></div>`;
+R.sort.init=(el)=>{ let sel=null;
+ const clear=()=>$$('.col',el).forEach(c=>c.classList.remove('ready'));
+ const put=col=>{ if(!sel) return; $('.items',col).appendChild(sel); sel.classList.remove('sel','good','bad'); sel.textContent=sel.dataset.t; sel=null; clear(); };
+ el.addEventListener('click',e=>{ const c=e.target.closest('.chip'), col=e.target.closest('[data-col]'), a=e.target.closest('[data-act]');
+  if(c){ if(sel===c){ c.classList.remove('sel'); sel=null; clear(); return; } $$('.chip',el).forEach(x=>x.classList.remove('sel')); sel=c; c.classList.add('sel'); $$('.col',el).forEach(x=>x.classList.add('ready')); return; }
+  if(col){ put(col); return; } if(!a) return;
+  if(a.dataset.act==='check') $$('.col .chip',el).forEach(x=>{ const ok=x.dataset.c===x.closest('[data-col]').dataset.col; x.classList.toggle('good',ok); x.classList.toggle('bad',!ok); x.textContent=ok&&x.dataset.pl?`${x.dataset.t} → ${x.dataset.pl}`:x.dataset.t; });
+  if(a.dataset.act==='rule') $$('[data-rule]',el).forEach(p=>p.textContent=p.textContent?'':p.dataset.rule);
+  if(a.dataset.act==='reset'){ const p=$('#pool',el); shuffle($$('.chip',el)).forEach(x=>{ x.classList.remove('good','bad','sel'); x.textContent=x.dataset.t; p.appendChild(x); }); $$('[data-rule]',el).forEach(p=>p.textContent=''); } });
+ el.addEventListener('keydown',e=>{ const col=e.target.closest('[data-col]'); if(col&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); put(col); } }); };
+
+R.gapchoice=s=>`<div class="card"><div class="list">${s.items.map((it,i)=>`<div class="gc" data-i="${i}"><span class="gs">${esc(it.s).replace('___','<span class="blank">_____</span>')}</span><span class="row">${it.o.map(o=>`<button class="chip" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</span></div>`).join('')}</div>
+ <div class="row center" style="margin-top:16px"><button class="btn sec" data-act="reset">${IC.again} Start again</button></div></div>`;
+R.gapchoice.init=(el,s)=>{ el.addEventListener('click',e=>{ const o=e.target.closest('[data-o]');
+ if(o){ const row=o.closest('[data-i]'), it=s.items[+row.dataset.i], ok=o.dataset.o===it.a; $$('[data-o]',row).forEach(b=>b.classList.remove('good','bad')); o.classList.add(ok?'good':'bad'); if(ok){ const b=$('.blank',row); b.textContent=it.a; b.classList.add('done'); } }
+ if(e.target.closest('[data-act="reset"]')){ $$('[data-o]',el).forEach(b=>b.classList.remove('good','bad')); $$('.blank',el).forEach(b=>{ b.textContent='_____'; b.classList.remove('done'); }); } }); };
+
+R.dialog=s=>`<div class="card"><div id="dlg"></div><div class="row center" style="margin-top:12px"><button class="btn sec" data-act="more">${IC.eye} Hide words</button><button class="btn sec" data-act="all">${IC.again} Show all</button></div></div>`;
+R.dialog.init=(el,s)=>{ const words=s.lines.map(l=>l[1].split(' ')); const hidden=new Set(); const all=[]; words.forEach((w,i)=>w.forEach((_,j)=>all.push(i+':'+j))); let order=shuffle(all);
+ const d=()=>{ $('#dlg',el).innerHTML=s.lines.map(([w],i)=>`<div class="dl ${w==='A'?'a':'b'}"><span class="dw">${w}</span><div class="dt">${words[i].map((x,j)=>hidden.has(i+':'+j)?`<span class="gapw">${esc(x)}</span>`:esc(x)).join(' ')}</div></div>`).join(''); }; d();
+ el.addEventListener('click',e=>{ const a=e.target.closest('[data-act]'); if(!a) return;
+  if(a.dataset.act==='more'){ order.splice(0,Math.max(2,Math.ceil(all.length/5))).forEach(k=>hidden.add(k)); if(!order.length) toast('All words hidden. Say it from memory!'); d(); }
+  if(a.dataset.act==='all'){ hidden.clear(); order=shuffle(all); d(); } }); };
+
+const rc=(k,t)=>`<div class="covered"><b style="font-size:19px;color:var(--ink)">${esc(t)}</b><span>Only this person looks.</span><button class="btn ${k==='a'?'pri':'sec'}" data-open="${k}">${IC.eye} Open card</button></div>`;
+R.roleplay=s=>`<div class="two"><div class="rcard a" id="ra">${rc('a',s.a.t)}</div><div class="rcard b" id="rb">${rc('b',s.b.t)}</div></div><div class="card" style="margin-top:20px"><h3>Useful phrases</h3><div class="tags">${s.phrases.map(p=>`<span class="pill">${esc(p)}</span>`).join('')}</div></div>`;
+R.roleplay.init=(el,s)=>{ el.addEventListener('click',e=>{ const o=e.target.closest('[data-open]'), h=e.target.closest('[data-hidecard]');
+ if(o){ const k=o.dataset.open, d=s[k]; $('#r'+k,el).innerHTML=`<h3>${esc(d.t)}</h3><ul>${d.i.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><button class="btn sec" data-hidecard="${k}" style="margin-top:10px">${IC.eye} Hide card</button>`; }
+ if(h){ const k=h.dataset.hidecard; $('#r'+k,el).innerHTML=rc(k,s[k].t); } }); };
+
+
+R.feedback=s=>`<div class="two"><div class="card"><h3>Let's fix it</h3><div class="row"><input type="text" id="enew" placeholder="Type a sentence with a mistake" aria-label="Sentence with a mistake" style="flex:1 1 240px;width:auto"><button class="btn pri" data-act="add">Add</button></div><div id="elist"></div></div>
+ <div class="card"><h3>What can you do now?</h3>${s.items.map((t,k)=>`<div class="cd"><span>${esc(t)}</span><span class="o"><button class="y" data-cd="${k}" aria-pressed="false">Yes, I can</button><button class="n" data-cd="${k}" aria-pressed="false">Not yet</button></span></div>`).join('')}</div></div>`;
+R.feedback.init=el=>{ const key='ley-err'; let list=store.get(key,[]);
+ const d=()=>{ $('#elist',el).innerHTML=list.length?list.map((x,k)=>`<div class="err"><span class="wrong">✗ ${esc(x.w)}</span><input type="text" data-fix="${k}" placeholder="Correct sentence..." value="${esc(x.f||'')}" aria-label="Correction"><button class="x" data-del="${k}" aria-label="Remove">✕</button></div>`).join(''):'<p class="small muted">No sentences yet.</p>'; }; d();
+ const save=()=>store.set(key,list); const add=()=>{ const v=$('#enew',el).value.trim(); if(!v) return; list.push({w:v,f:''}); save(); $('#enew',el).value=''; d(); };
+ $('#enew',el).addEventListener('keydown',e=>{ if(e.key==='Enter') add(); });
+ el.addEventListener('click',e=>{ if(e.target.closest('[data-act="add"]')) add(); const x=e.target.closest('[data-del]'); if(x){ list.splice(+x.dataset.del,1); save(); d(); }
+  const b=e.target.closest('[data-cd]'); if(b) $$(`[data-cd="${b.dataset.cd}"]`,el).forEach(y=>y.setAttribute('aria-pressed',y===b)); });
+ el.addEventListener('input',e=>{ const f=e.target.closest('[data-fix]'); if(f){ list[+f.dataset.fix].f=f.value; save(); } }); };
+
+
+/* ======================= PLAYER ======================= */
+let idx=0, cleanup=[];
+try{ const h=parseInt(location.hash.slice(1),10); if(h>=1&&h<=S.length) idx=h-1; else idx=Math.min(S.length-1,Math.max(0,store.get('ley-slide',0))); }catch(e){}
+const main=$('#main');
+function render(){ cleanup.forEach(f=>f()); cleanup=[]; const s=S[idx];
+ main.innerHTML=`<section class="slide">${s.type==='cover'?'':strip(s)+header(s)}<div id="body"></div></section>`;
+ const el=$('#body',main); el.innerHTML=R[s.type](s); if(R[s.type].init) R[s.type].init(el,s);
+ $('#crumbs').innerHTML=SECTIONS.map((x,k)=>`<span>${k===s.sec?`<b>${x}</b>`:x}</span>`).join('');
+ $('#count').textContent=`${idx+1} / ${S.length}`; $('#prog').style.width=`${(idx+1)/S.length*100}%`;
+ $('#bBack').disabled=idx===0; $('#bNext').disabled=idx===S.length-1;
+ const g=$('#guideBody'); g.innerHTML=`<div class="pre"></div>`; $('.pre',g).textContent=s.more||''; if(s.why){ const w=document.createElement('div'); w.className='why'; w.innerHTML='<b>Why it works</b><br>'; w.appendChild(document.createTextNode(s.why)); g.appendChild(w); }
+ drawToc(); store.set('ley-slide',idx); try{ history.replaceState(null,'','#'+(idx+1)); }catch(e){} window.scrollTo({top:0}); }
+function drawToc(){ let total=0; const parts=[-1,0,1,2].map(sec=>{ const list=S.map((s,k)=>[s,k]).filter(([s])=>s.sec===sec); if(!list.length) return ''; return `<h4>${sec<0?'Start':SECTIONS[sec]}</h4>`+list.map(([s,k])=>{ total+=s.min; return `<button data-goto="${k}" class="${k===idx?'cur':''}"><span class="n">${k+1}</span><span>${esc(s.title)}<br><span class="m">${esc(s.method)}${s.optional?' · optional':''}</span></span><span class="t">${s.min?s.min+' min':''}</span></button>`; }).join(''); }).join('');
+ $('#tocBody').innerHTML=parts+`<p class="small muted" style="margin-top:16px">Total: about ${total} minutes. Choose the slides for each class.</p>`; }
+const go=n=>{ idx=Math.max(0,Math.min(S.length-1,n)); render(); };
+$('#bNext').onclick=()=>go(idx+1); $('#bBack').onclick=()=>go(idx-1);
+function setGuide(on){ document.body.classList.toggle('noguide',!on); $('#bGuide').setAttribute('aria-pressed',on); store.set('ley-guide',on); }
+setGuide(store.get('ley-guide',true)); $('#bGuide').onclick=()=>setGuide(document.body.classList.contains('noguide'));
+$('#bToc').onclick=()=>$('#toc').classList.add('open');
+document.addEventListener('keydown',e=>{ if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return; if(e.key==='ArrowRight') go(idx+1); if(e.key==='ArrowLeft') go(idx-1); if(e.key.toLowerCase()==='t') setGuide(document.body.classList.contains('noguide')); if(e.key==='Escape') $$('.drawer').forEach(d=>d.classList.remove('open')); });
+document.addEventListener('click',e=>{ const g=e.target.closest('[data-go]'); if(g){ go(+g.dataset.go); return; }
+ const t=e.target.closest('[data-goto]'); if(t){ $('#toc').classList.remove('open'); go(+t.dataset.goto); return; }
+ if(e.target.closest('[data-open-toc]')) $('#toc').classList.add('open');
+ if(e.target.closest('[data-more]')) $('#guide').classList.add('open');
+ const c=e.target.closest('[data-close]'); if(c) $('#'+c.dataset.close).classList.remove('open');
+ const d=e.target.closest('[data-dlg]'); if(d) $('#'+d.dataset.dlg).close(); });
+$('#vocabBody').innerHTML=`<h4 style="margin:4px 0 6px">Work clothes</h4><table class="vt">${[['boots','botas'],['hat / cap','chapéu / boné'],['gloves','luvas'],['T-shirt / shirt','camiseta / camisa'],['jeans','calça jeans'],['jacket','jaqueta'],['vest','colete'],['socks','meias'],['raincoat','capa de chuva'],['uniform','uniforme']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>
+<h4 style="margin:18px 0 6px">On the farm</h4><table class="vt">${[['cow / cows','vaca / vacas'],['bull / bulls','touro / touros'],['calf / calves','bezerro / bezerros'],['sheep / sheep','ovelha / ovelhas'],['tractor','trator'],['corn / soybeans','milho / soja'],['box / boxes','caixa / caixas'],['warehouse','almoxarifado / depósito']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>
+<h4 style="margin:18px 0 6px">Verbs</h4><table class="vt">${[['try – tried','experimentar / tentar'],['ask – asked','perguntar / pedir'],['lend – lent','emprestar (para alguém)'],['cost – cost','custar'],['guess – guessed','adivinhar'],['borrow – borrowed','pegar emprestado'],['wear – wore','vestir / usar'],['buy – bought','comprar']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>`;
+$('#gramBody').innerHTML=`<h4>Demonstrative pronouns</h4><p>Use them to show things or people near or far.</p>
+<div class="ex"><b>This</b> is my hat. (1 thing, near)</div><div class="ex"><b>That</b> is a tractor. (1 thing, far)</div><div class="ex"><b>These</b> are my boots. (2+ things, near)</div><div class="ex"><b>Those</b> are cows. (2+ things, far)</div>
+<p>this / that + <b>is</b> · these / those + <b>are</b></p>
+<h4>Noun plurals</h4><div class="ex">Most words: <b>+ s</b> → boot → boots, cow → cows</div><div class="ex">-s, -x, -ch, -sh: <b>+ es</b> → box → boxes, watch → watches</div><div class="ex">consonant + y: <b>y → ies</b> → battery → batteries</div><div class="ex">-f / -fe: <b>→ ves</b> → calf → calves, knife → knives</div><div class="ex">Irregular: man → men, woman → women, sheep → sheep, foot → feet</div>
+<h4>Lend or borrow?</h4><div class="ex">Can I <b>borrow</b> your gloves? (eu pego emprestado)</div><div class="ex">I can <b>lend</b> you my gloves. (eu empresto)</div>`;
+$('#bVocab').onclick=()=>$('#dVocab').showModal(); $('#bGram').onclick=()=>$('#dGram').showModal();
+let tLeft=180,tRun=null; const tShow=()=>{ const d=$('#tDisp'); d.textContent=`${Math.floor(tLeft/60)}:${String(tLeft%60).padStart(2,'0')}`; d.classList.toggle('done',tLeft===0); };
+function startTimer(sec){ clearInterval(tRun); tLeft=sec; tShow(); $('#tGo').textContent='Pause'; tRun=setInterval(()=>{ tLeft--; tShow(); if(tLeft<=0){ clearInterval(tRun); tRun=null; $('#tGo').textContent='Start'; const t=$('.timer'); t.classList.add('timeup'); setTimeout(()=>t.classList.remove('timeup'),3200); } },1000); }
+$$('.timer [data-min]').forEach(b=>b.onclick=()=>{ clearInterval(tRun); tRun=null; tLeft=b.dataset.min*60; $('#tGo').textContent='Start'; tShow(); });
+$('#tGo').onclick=()=>{ if(tRun){ clearInterval(tRun); tRun=null; $('#tGo').textContent='Start'; return; } startTimer(tLeft===0?180:tLeft); };
+tShow(); render();
+</script>
+</body>
+</html>
