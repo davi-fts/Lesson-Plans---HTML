@@ -290,13 +290,13 @@ Cerca de 65 minutos. Se precisar cortar, os slides marcados como "Optional" pode
  why:'O conteúdo do material original continua o mesmo, mas aplicado ao mundo da aluna. Isso dá sentido às palavras e aumenta a chance de ela usá-las de verdade.'},
 
 {type:'talk',sec:0,method:'Communicative warm-up',min:5,title:"Let's talk about your work",instr:'Answer the questions. Short answers are fine.',
- qs:["What's your name?",'Where do you work?','What do you do at work?','What do you wear at work?','What animals are on the farm?'],
+ qs:["What's your name?",'Where do you work?','What do you do at work?','What do you wear at work?','What animals are there on the farm?'],
  steps:['Mostre a pergunta. Aceite respostas curtas ("Boots!", "Cows!").','Use » para a próxima pergunta.','Descubra a função dela no trabalho e anote palavras que ela disser em português.'],
  more:`Nível A1: frases curtas e muito modelo. Se ela travar, dê o começo da frase ("I work at...", "I wear...").`,
  why:'Conversa sobre a vida real da aluna ativa o tema e mostra a você o que ela já sabe.'},
 
 {type:'vocab',sec:1,method:'Picture vocabulary',min:8,title:'Work clothes',instr:'Listen and repeat. Then say the words without help.',
- items:[['🥾','boots','botas'],['🤠','hat','chapéu'],['🧢','cap','boné'],['🧤','gloves','luvas'],['👕','T-shirt','camiseta'],['👔','shirt','camisa'],['👖','jeans','calça jeans'],['🧥','jacket','jaqueta'],['🦺','vest','colete'],['🧦','socks','meias'],['☔','raincoat','capa de chuva'],['👚','uniform','uniforme']],
+ items:[['🥾','boots','botas'],['🤠','hat','chapéu'],['🧢','cap','boné'],['🧤','gloves','luvas'],['👕','T-shirt','camiseta'],['👔','shirt','camisa'],['👖','jeans','calça jeans'],['🧥','jacket','jaqueta'],['🦺','vest','colete'],['🧦','socks','meias'],['☔','umbrella','guarda-chuva'],['👚','uniform','uniforme']],
  steps:['Diga cada palavra. A aluna repete.','Pergunte: "What do you wear at work?" Ela aponta e diz.','Clique em "Hide words". Aponte as imagens e ela diz sem ler.'],
  more:`Atenção à pronúncia: gloves (o "o" soa como "â"), jacket (djé-ket), clothes (clouz).
 Pergunte se ela usa uniforme ou outras roupas no trabalho e acrescente a palavra.`,
@@ -346,8 +346,8 @@ Pronúncia: boxes e watches ganham uma sílaba a mais ("bóks-iz").`,
  why:'Frases prontas, que vão sumindo aos poucos, levam da leitura para a fala de memória.'},
 
 {type:'roleplay',sec:2,method:'Role-play',min:8,title:'Borrow or buy?',instr:'You need things for work. Your teacher works in the warehouse.',
- a:{t:'Leysimar (you)',i:['You need gloves and a raincoat.','Ask to borrow the gloves.','Ask: "How much does this raincoat cost?"','Ask to try it on.','Buy it!']},
- b:{t:'Warehouse (teacher)',i:['You have gloves to lend. Point: "These? Those?"','The raincoat costs 150 reais.','The boots cost 200 reais.','Say: "Sure!" / "Of course!" / "Here you are."']},
+ a:{t:'Leysimar (you)',i:['You need gloves and an umbrella.','Ask to borrow the gloves.','Ask: "How much does this umbrella cost?"','Ask to see it.','Buy it!']},
+ b:{t:'Warehouse (teacher)',i:['You have gloves to lend. Point: "These? Those?"','The umbrella costs 150 reais.','The boots cost 200 reais.','Say: "Sure!" / "Of course!" / "Here you are."']},
  phrases:['Can I borrow...?','How much does this ... cost?','How much do these ... cost?','Can I try it on?','I want this / these, please.','Thank you!'],
  steps:['Abra só o cartão dela. Você usa o cartão do almoxarifado.','Use objetos reais ou as imagens: aponte e use this/that/these/those.','Façam 2 vezes, depois troquem de papel.'],
  more:`Se a função dela for outra (escritório, campo), adapte a situação: pedir material no escritório, pedir ferramentas no campo.`,
@@ -462,7 +462,7 @@ document.addEventListener('click',e=>{ const g=e.target.closest('[data-go]'); if
  if(e.target.closest('[data-more]')) $('#guide').classList.add('open');
  const c=e.target.closest('[data-close]'); if(c) $('#'+c.dataset.close).classList.remove('open');
  const d=e.target.closest('[data-dlg]'); if(d) $('#'+d.dataset.dlg).close(); });
-$('#vocabBody').innerHTML=`<h4 style="margin:4px 0 6px">Work clothes</h4><table class="vt">${[['boots','botas'],['hat / cap','chapéu / boné'],['gloves','luvas'],['T-shirt / shirt','camiseta / camisa'],['jeans','calça jeans'],['jacket','jaqueta'],['vest','colete'],['socks','meias'],['raincoat','capa de chuva'],['uniform','uniforme']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>
+$('#vocabBody').innerHTML=`<h4 style="margin:4px 0 6px">Work clothes</h4><table class="vt">${[['boots','botas'],['hat / cap','chapéu / boné'],['gloves','luvas'],['T-shirt / shirt','camiseta / camisa'],['jeans','calça jeans'],['jacket','jaqueta'],['vest','colete'],['socks','meias'],['umbrella','guarda-chuva'],['uniform','uniforme']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>
 <h4 style="margin:18px 0 6px">On the farm</h4><table class="vt">${[['cow / cows','vaca / vacas'],['bull / bulls','touro / touros'],['calf / calves','bezerro / bezerros'],['sheep / sheep','ovelha / ovelhas'],['tractor','trator'],['corn / soybeans','milho / soja'],['box / boxes','caixa / caixas'],['warehouse','almoxarifado / depósito']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>
 <h4 style="margin:18px 0 6px">Verbs</h4><table class="vt">${[['try – tried','experimentar / tentar'],['ask – asked','perguntar / pedir'],['lend – lent','emprestar (para alguém)'],['cost – cost','custar'],['guess – guessed','adivinhar'],['borrow – borrowed','pegar emprestado'],['wear – wore','vestir / usar'],['buy – bought','comprar']].map(([w,p])=>`<tr><td><b>${w}</b></td><td>${p}</td></tr>`).join('')}</table>`;
 $('#gramBody').innerHTML=`<h4>Demonstrative pronouns</h4><p>Use them to show things or people near or far.</p>
